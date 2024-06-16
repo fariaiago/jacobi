@@ -26,5 +26,6 @@ def jacobi(A: np.ndarray, b: np.ndarray, X0: np.ndarray, k: int, e: float) -> tu
 		E.append(np.amax(np.absolute(Xn - Xn_old), axis=0))
 		if E[-1] < e:
 			break
+	X.append(Xn)
 	return (X, E)
 #print(jacobi(A=np.array([[2., -1.],[1., 2.]]), b=np.array([1., 3.]), X0=np.array([0., 0.]), k=10, e=1e-2))
