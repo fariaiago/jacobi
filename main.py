@@ -29,14 +29,15 @@ for i in range(0, len(X)):
 
 plot.plot(Xx, sol0, label="Exata x0")
 plot.plot(Xx, sol1, label="Exata x1")
+if sis == 2:
+	plot.plot(Xx, sol2, label="Exata x2")
 plot.plot(Xx, y0, label="Aprox. x0")
 plot.plot(Xx, y1, label="Aprox. x1")
+if sis == 2:
+	plot.plot(Xx, y2, label="Aprox. x2")
 plot.plot(Xx, np.absolute(np.subtract(y0, sol0)), label="Dif. x0")
 plot.plot(Xx, np.absolute(np.subtract(y1, sol1)), label="Dif. x1")
-
 if sis == 2:
-	plot.plot(Xx, sol2, label="Exata x0")
-	plot.plot(Xx, y2, label="Aprox. x2")
 	plot.plot(Xx, np.absolute(np.subtract(y2, sol2)), label="Dif. x2")
 
 plot.legend()
