@@ -2,7 +2,7 @@ import jacobi
 import ioj
 import matplotlib.pyplot as plot
 import numpy as np
-import pprint
+import pandas as pd
 
 sis = ioj.welcomeUser()
 A, b, par, X0, sol = ioj.userInput(sis)
@@ -42,3 +42,23 @@ if sis == 2:
 
 plot.legend()
 plot.show()
+
+# Gerar os dados da tabela
+data = []
+for i in range(1, len(X)):  # Itera a partir de 1 para evitar erro de diferença com X[-1]
+    x1 = X[i][0]
+    x2 = X[i][1]
+    erro = np.linalg.norm(X[i] - X[i-1], ord=np.inf)
+    if sis == 1:
+        data.append(["", x1, x2, erro])
+    elif sis == 2:
+        x3 = X[i][2]
+        data.append(["", x1, x2, x3, erro])
+
+# Criação do DataFrame
+if sis == 1:
+    df = pd.DataFrame(data, columns=['Iteração', 'x1', 'x2', 'Erro'])
+elif sis == 2:
+    df = pd.DataFrame(data, columns=['Iteração', 'x1', 'x2', 'x3', 'Erro'])
+
+print(df)
